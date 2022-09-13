@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:TaskQulix.Model"
+             xmlns:modelview="clr-namespace:TaskQulix.ViewModel"
+             x:DataType="modelview:CurrencyViewModel"
+             x:Class="TaskQulix.MainPage"
+             Title="{Binding Title}"
+             >
+    
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--firs row-->
+        <ImageButton Grid.Row="0" Grid.Column="0"
+                CornerRadius="0"
+                HorizontalOptions="Start"
+                WidthRequest="50"
+                Source="leftarrow.png"
+                     
+                     >
+            
+            
+        </ImageButton>
+        <Label  Grid.Row="0" Grid.Column="1" Text=" Курсы валют"
+                 WidthRequest="270"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                FontSize="Body"
+                FontAttributes="Bold"
+                />
+        <ImageButton Grid.Row="0" Grid.Column="2"
+                CornerRadius="0"
+                HorizontalOptions="End"
+                WidthRequest="50"
+                Source="setting.png"
+                />
+        <!--firs row end -->
+        
+        <!--second row-->
+
+        <!--<BoxView Grid.Row="1" Grid.Column="0"
+                    Color="Teal" />
+        
+        <BoxView Grid.Row="1" Grid.Column="1"
+                    Color="Purple" />-->
+        
+        <!--<BoxView Grid.Row="1" Grid.Column="2"
+                    Color="Orange" />-->
+        
+        <Grid Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="3" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.65*"/>
+                <ColumnDefinition Width="0.35*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Text="12.11.2022"  FontSize="Title"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="End"
+                   
+                   />
+            <Label Grid.Column="1" Text="13.11.2022"
+                   FontSize="Title"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="End"
+                   />
+        </Grid>
+        <!--second row-->
+
+
+        <!--third row-->
+        <CollectionView Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="3"
+                        ItemsSource="{Binding Currency}" 
+                        SelectionMode="None"
+                        >
+
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Currency" >
+                    <Grid Padding="10"
+                          RowDefinitions="*, Auto">
+                        <Frame HeightRequest="100"
+                               Grid.Row="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*"/>
+                                    <RowDefinition Height="0.5*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Text="{Binding Cur_Abbreviation}" FontSize="20"/>
+                                <HorizontalStackLayout Grid.Row="1">
+                                    <Label Text="{Binding Cur_Scale }" FontSize="11" />
+                                    <Label Text=" " />
+                                    <Label Text="{Binding Cur_Name }" FontSize="11"/>
+                                </HorizontalStackLayout>
+                                <Grid Grid.Column="1" Grid.RowSpan="2">
+                                    <Label Text="{Binding Cur_OfficialRate}" 
+                                           HorizontalTextAlignment="Center" 
+                                           VerticalTextAlignment="Center"
+                                           FontSize="Large"
+                                           />
+                                </Grid>
+                                <Grid Grid.Column="2"  Grid.RowSpan="2">
+                                    <Label Text="{Binding Cur_OfficialRate}" 
+                                           HorizontalTextAlignment="Center" 
+                                           VerticalTextAlignment="Center"
+                                           FontSize="Large"
+                                           />
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>
